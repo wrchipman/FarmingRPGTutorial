@@ -15,10 +15,6 @@ run/main_scene="res://scenes/tiled_scenes/farm_main.tscn"
 config/features=PackedStringArray("4.2", "Forward Plus")
 config/icon="res://icon.svg"
 
-[autoload]
-
-Player="*res://scenes/player.tscn"
-
 [display]
 
 window/size/viewport_width=640

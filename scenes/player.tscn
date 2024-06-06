@@ -1386,8 +1386,9 @@ autoplay = "idle_down"
 z_index = 5
 position = Vector2(0, -16)
 sprite_frames = SubResource("SpriteFrames_lfq3n")
-animation = &"walk_right"
+animation = &"idle_down"
 autoplay = "idle_down"
+frame_progress = 0.051793
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position_smoothing_speed = 2.0
