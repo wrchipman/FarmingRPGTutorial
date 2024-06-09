@@ -1,9 +1,6 @@
-[gd_scene load_steps=3 format=3 uid="uid://btpbbihgjblk7"]
+[gd_scene load_steps=2 format=3 uid="uid://btpbbihgjblk7"]
 
 [ext_resource type="Script" path="res://scripts/world.gd" id="1_0gw4a"]
-[ext_resource type="PackedScene" uid="uid://byamk5nauxyql" path="res://scenes/tiled_scenes/farm_main.tscn" id="2_6ak6e"]
 
 [node name="World" type="Node2D"]
 script = ExtResource("1_0gw4a")
-
-[node name="FarmMain" parent="." instance=ExtResource("2_6ak6e")]
