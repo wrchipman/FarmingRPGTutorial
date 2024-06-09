@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://dgns81v6icvla"]
+
+[ext_resource type="Script" path="res://scripts/world.gd" id="1_notxb"]
+[ext_resource type="PackedScene" uid="uid://ctevghi0knqtt" path="res://scenes/tiled_scenes/farm_main1.tscn" id="2_8iayh"]
+
+[node name="World" type="Node2D"]
+script = ExtResource("1_notxb")
+
+[node name="FarmMain" parent="." instance=ExtResource("2_8iayh")]

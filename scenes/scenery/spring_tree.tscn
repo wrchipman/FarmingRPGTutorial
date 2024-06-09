@@ -1,0 +1,75 @@
+[gd_scene load_steps=11 format=3 uid="uid://c4mwpytsg4x1b"]
+
+[ext_resource type="Script" path="res://scripts/scenery/spring_tree.gd" id="1_2kag3"]
+[ext_resource type="Texture2D" uid="uid://cb434y8rcd1h0" path="res://assets/terrain/tree_shake.png" id="1_ir2j3"]
+[ext_resource type="Script" path="res://scripts/misc/sprite_fader.gd" id="1_ykvtp"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_esi6v"]
+size = Vector2(8, 4)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_aevmb"]
+atlas = ExtResource("1_ir2j3")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_co877"]
+atlas = ExtResource("1_ir2j3")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yax2v"]
+atlas = ExtResource("1_ir2j3")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fxt57"]
+atlas = ExtResource("1_ir2j3")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_e1eu7"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_aevmb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_co877")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yax2v")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fxt57")
+}],
+"loop": true,
+"name": &"default",
+"speed": 4.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_k6hax"]
+radius = 2.8934
+
+[node name="SpringTree" type="StaticBody2D"]
+y_sort_enabled = true
+script = ExtResource("1_2kag3")
+
+[node name="TrunkCollisionArea" type="CollisionShape2D" parent="."]
+position = Vector2(0, 14)
+shape = SubResource("RectangleShape2D_esi6v")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+y_sort_enabled = true
+position = Vector2(0, 15)
+sprite_frames = SubResource("SpriteFrames_e1eu7")
+frame = 1
+frame_progress = 0.390066
+offset = Vector2(0, -15)
+script = ExtResource("1_ykvtp")
+
+[node name="Area2D" type="Area2D" parent="."]
+scale = Vector2(-4.49298, 4.79595)
+collision_layer = 4
+collision_mask = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_k6hax")
+
+[connection signal="body_entered" from="Area2D" to="AnimatedSprite2D" method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="Area2D" to="AnimatedSprite2D" method="_on_area_2d_body_exited"]

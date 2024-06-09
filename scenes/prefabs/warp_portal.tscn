@@ -1,0 +1,49 @@
+[gd_scene load_steps=9 format=3 uid="uid://swpx3cck4d0w"]
+
+[ext_resource type="Script" path="res://scripts/warp_portal.gd" id="1_op27m"]
+
+[sub_resource type="PackedScene" id="PackedScene_y54qx"]
+
+[sub_resource type="Gradient" id="Gradient_ne105"]
+offsets = PackedFloat32Array(0, 0.460481, 0.773196)
+colors = PackedColorArray(0, 0, 0, 1, 0.522337, 0.522337, 0.522337, 1, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_txkft"]
+gradient = SubResource("Gradient_ne105")
+
+[sub_resource type="Curve" id="Curve_cg06s"]
+_data = [Vector2(0, 0.481943), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_mh04y"]
+width = 255
+curve = SubResource("Curve_cg06s")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_ur7yq"]
+lifetime_randomness = 0.3
+particle_flag_disable_z = true
+gravity = Vector3(0, 98, 0)
+scale_min = 2.0
+scale_max = 4.0
+scale_curve = SubResource("CurveTexture_mh04y")
+color = Color(0.4975, 1, 0.33, 1)
+color_ramp = SubResource("GradientTexture1D_txkft")
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_73xml"]
+size = Vector2(16.5, 7)
+
+[node name="WarpPortal" type="Area2D"]
+collision_mask = 8
+script = ExtResource("1_op27m")
+new_scene = SubResource("PackedScene_y54qx")
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+rotation = 3.14159
+amount = 4
+process_material = SubResource("ParticleProcessMaterial_ur7yq")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 0.5)
+shape = SubResource("RectangleShape2D_73xml")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

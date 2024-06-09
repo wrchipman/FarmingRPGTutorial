@@ -1,0 +1,61 @@
+[gd_scene load_steps=6 format=3 uid="uid://cguqhi4du6qxs"]
+
+[ext_resource type="Texture2D" uid="uid://cr63dy5kvy1i5" path="res://assets/tiles/tiles.png" id="1_2oxa8"]
+[ext_resource type="Script" path="res://scripts/misc/sprite_fader.gd" id="2_lt5uk"]
+[ext_resource type="Texture2D" uid="uid://c57v06x85m7kk" path="res://assets/textures/light.png" id="2_t4lso"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_387kc"]
+size = Vector2(8, 4)
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_qfu4t"]
+radius = 12.931
+height = 44.4444
+
+[node name="StreetLamp" type="StaticBody2D"]
+y_sort_enabled = true
+collision_layer = 5
+collision_mask = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 22)
+shape = SubResource("RectangleShape2D_387kc")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, 25)
+texture = ExtResource("1_2oxa8")
+offset = Vector2(0, -25)
+region_enabled = true
+region_rect = Rect2(63, 752, 33, 48)
+script = ExtResource("2_lt5uk")
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+position = Vector2(-10, 0)
+scale = Vector2(0.56, -0.490789)
+energy = 0.1
+texture = ExtResource("2_t4lso")
+
+[node name="PointLight2D2" type="PointLight2D" parent="."]
+position = Vector2(0, -13)
+energy = 0.1
+texture = ExtResource("2_t4lso")
+
+[node name="PointLight2D3" type="PointLight2D" parent="."]
+y_sort_enabled = true
+position = Vector2(10, 0)
+energy = 0.1
+texture = ExtResource("2_t4lso")
+
+[node name="Area2D" type="Area2D" parent="."]
+position = Vector2(0, 25)
+collision_layer = 4
+collision_mask = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+visible = false
+top_level = true
+position = Vector2(0, -4)
+scale = Vector2(1.16, 1.08)
+shape = SubResource("CapsuleShape2D_qfu4t")
+
+[connection signal="body_entered" from="Area2D" to="Sprite2D" method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="Area2D" to="Sprite2D" method="_on_area_2d_body_exited"]
