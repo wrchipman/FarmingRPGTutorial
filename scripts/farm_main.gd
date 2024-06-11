@@ -1,10 +1,9 @@
-extends Node2D
+extends BaseScene
 
-@onready var player = $Player
+@onready var camera = $FollowCamera
 
 func _ready():
-	player.set_camera_limits($TileMap.get_used_rect(), $TileMap.tile_set.tile_size)
-	player.global_position = $SpawnPoint.global_position
+	super()
+	camera.follow_node = player
+	
 
-
-		

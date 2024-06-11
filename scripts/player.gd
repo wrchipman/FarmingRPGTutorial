@@ -68,8 +68,3 @@ func right_animation():
 	shoes.play("walk_right")
 	hair.play("walk_right")
 	
-func set_camera_limits(tile_map_rect, cell_size ):
-	$Camera2D.limit_left = tile_map_rect.position.x * cell_size.x
-	$Camera2D.limit_right = tile_map_rect.end.x * cell_size.x
-	$Camera2D.limit_top = tile_map_rect.position.y * cell_size.y
-	$Camera2D.limit_bottom = tile_map_rect.end.y * cell_size.y

@@ -1382,7 +1382,3 @@ sprite_frames = SubResource("SpriteFrames_lfq3n")
 animation = &"idle_down"
 autoplay = "idle_down"
 frame_progress = 0.447045
-
-[node name="Camera2D" type="Camera2D" parent="."]
-limit_smoothed = true
-position_smoothing_enabled = true

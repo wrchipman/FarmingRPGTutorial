@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://qlmj0e1g5703"]
+
+[ext_resource type="Script" path="res://scripts/misc/follow_camera.gd" id="1_covmc"]
+
+[node name="FollowCamera" type="Camera2D" node_paths=PackedStringArray("tilemap", "follow_node")]
+limit_smoothed = true
+position_smoothing_enabled = true
+script = ExtResource("1_covmc")
+tilemap = NodePath("")
+follow_node = NodePath("")

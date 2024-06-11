@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://cvm3iv7ngvi3u"]
+
+[ext_resource type="PackedScene" uid="uid://bydlq6ropy28u" path="res://scenes/prefabs/player.tscn" id="1_qreta"]
+[ext_resource type="PackedScene" uid="uid://bpasuc4qke2ou" path="res://scenes/prefabs/tile_map.tscn" id="2_sh18m"]
+[ext_resource type="PackedScene" uid="uid://qlmj0e1g5703" path="res://scenes/prefabs/follow_camera.tscn" id="3_yvqk6"]
+
+[node name="GenericWorldScene" type="Node2D"]
+
+[node name="Player" parent="." instance=ExtResource("1_qreta")]
+
+[node name="TileMap" parent="." instance=ExtResource("2_sh18m")]
+
+[node name="FollowCamera" parent="." node_paths=PackedStringArray("tilemap", "follow_node") instance=ExtResource("3_yvqk6")]
+tilemap = NodePath("../TileMap")
+follow_node = NodePath("../Player")
+
+[node name="Scenery" type="Node2D" parent="."]
+
+[node name="EntranceMarkers" type="Node2D" parent="."]
